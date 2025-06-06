@@ -35,16 +35,28 @@ final class ContactViewController: UIViewController {
     view.backgroundColor = .systemBackground
 
     view.addSubview(contentView)
-    // 컨텐트 레이아웃 구성
+    contentView.snp.makeConstraints {
+      $0.top.leading.trailing.equalToSuperview()
+    }
 
     contentView.addSubview(profileImageView)
-    // 프로필 이미지 레이아웃 구성
+    profileImageView.snp.makeConstraints {
+      $0.top.equalTo(contentView.safeAreaLayoutGuide)
+      $0.centerX.equalToSuperview()
+      $0.size.equalTo(160)
+    }
 
     contentView.addSubview(nameLabel)
-    // 이름 레이아웃 구성
+    nameLabel.snp.makeConstraints {
+      $0.top.equalTo(profileImageView.snp.bottom).offset(16)
+      $0.centerX.equalToSuperview()
+    }
 
     contentView.addSubview(contactButton)
-    // 연락처 추가 버튼 레이아웃 구성
+    contactButton.snp.makeConstraints {
+      $0.top.equalTo(nameLabel.snp.bottom).offset(16)
+      $0.leading.trailing.bottom.equalToSuperview().inset(20)
+    }
   }
 }
 
