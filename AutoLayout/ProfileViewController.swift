@@ -95,8 +95,21 @@ final class ProfileViewController: UIViewController {
     introLabel.snp.makeConstraints {
       // 소개 레이아웃 구성 (가능하면 infoLayoutGuide 사용해보기)
       $0.top.equalTo(nameLabel.snp.bottom).offset(10)
+      $0.leading.trailing.equalTo(infoLayoutGuide)
+    }
+
+    let buttonStackView = UIStackView(arrangedSubviews: [followButton, addToPlaylistButton]).then {
+      $0.axis = .horizontal
+      $0.spacing = 10
+    }
+    contentView.addSubview(buttonStackView)
+    buttonStackView.snp.makeConstraints {
+      $0.top.equalTo(introLabel.snp.bottom).offset(20)
       $0.leading.trailing.bottom.equalTo(infoLayoutGuide)
     }
+
+    addToPlaylistButton.setContentHuggingPriority(.required, for: .horizontal)
+    addToPlaylistButton.setContentCompressionResistancePriority(.required, for: .horizontal)
   }
 }
 
