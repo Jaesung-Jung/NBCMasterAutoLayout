@@ -78,18 +78,24 @@ final class ProfileViewController: UIViewController {
 
     contentView.snp.makeConstraints {
       // 카드 컨테이너 레이아웃
+      $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
     }
 
     profileImageView.snp.makeConstraints {
       // 프로필 이미지 레이아웃
+      $0.top.leading.trailing.equalToSuperview()
+      $0.height.equalTo(profileImageView.snp.width).multipliedBy(0.75)
     }
 
     nameLabel.snp.makeConstraints {
       // 이름 레이아웃 구성 (가능하면 infoLayoutGuide 사용해보기)
+      $0.top.leading.equalTo(infoLayoutGuide)
     }
 
     introLabel.snp.makeConstraints {
       // 소개 레이아웃 구성 (가능하면 infoLayoutGuide 사용해보기)
+      $0.top.equalTo(nameLabel.snp.bottom).offset(10)
+      $0.leading.trailing.bottom.equalTo(infoLayoutGuide)
     }
   }
 }
